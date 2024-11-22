@@ -7,25 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Luban;
-using SimpleJSON;
+
 
 namespace cfg
-{
-public partial class Tables
-{
-    public PlantsTable PlantsTable {get; }
-
-    public Tables(System.Func<string, JSONNode> loader)
+{ 
+    public enum PlantsEnum
     {
-        PlantsTable = new PlantsTable(loader("plantstable"));
-        ResolveRef();
+        白萝卜 = 0,
     }
-    
-    private void ResolveRef()
-    {
-        PlantsTable.ResolveRef(this);
-    }
-}
 
-}
+} 
+
