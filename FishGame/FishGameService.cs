@@ -15,19 +15,7 @@ namespace GameCore.FishGame
         Hall, // 大厅
         Gaming, // 游戏中
     }
-
-    public class UserStateFormatter : MemoryPackFormatter<UserState>
-    {
-        public override void Serialize<TBufferWriter>(ref MemoryPackWriter<TBufferWriter> writer, ref UserState value)
-        {
-            writer.WriteUnmanaged(value);
-        }
-
-        public override void Deserialize(ref MemoryPackReader reader, ref UserState value)
-        {
-            value = reader.ReadUnmanaged<UserState>();
-        }
-    }
+    
 
     /// <summary>
     /// 网络状态码
@@ -37,19 +25,7 @@ namespace GameCore.FishGame
         Success,
         Failed,
     }
-
-    public class StatusCodeFormatter : MemoryPackFormatter<StatusCode>
-    {
-        public override void Serialize<TBufferWriter>(ref MemoryPackWriter<TBufferWriter> writer, ref StatusCode value)
-        {
-            writer.WriteUnmanaged(value);
-        }
-
-        public override void Deserialize(ref MemoryPackReader reader, ref StatusCode value)
-        {
-            value = reader.ReadUnmanaged<StatusCode>();
-        }
-    }
+    
 
     public enum GameState : byte
     {
@@ -60,20 +36,7 @@ namespace GameCore.FishGame
         Win,
         Failed,
     }
-
-    public class GameStateFormatter : MemoryPackFormatter<GameState>
-    {
-        public override void Serialize<TBufferWriter>(ref MemoryPackWriter<TBufferWriter> writer, ref GameState value)
-        {
-            writer.WriteUnmanaged(value);
-        }
-
-        public override void Deserialize(ref MemoryPackReader reader, ref GameState value)
-        {
-            value = reader.ReadUnmanaged<GameState>();
-        }
-    }
-
+    
     [MemoryPackable]
     public partial struct RegisterResult
     {
