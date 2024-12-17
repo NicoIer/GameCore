@@ -1,6 +1,9 @@
+using MemoryPack;
+
 namespace GameCore.FishGame
 {
-    public struct User
+    [MemoryPackable]
+    public partial struct User
     {
         public uint id;
         public string nickname;

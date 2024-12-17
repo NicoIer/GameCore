@@ -16,6 +16,19 @@ namespace GameCore.FishGame
         Gaming, // 游戏中
     }
 
+    public class UserStateFormatter : MemoryPackFormatter<UserState>
+    {
+        public override void Serialize<TBufferWriter>(ref MemoryPackWriter<TBufferWriter> writer, ref UserState value)
+        {
+            writer.WriteUnmanaged(value);
+        }
+
+        public override void Deserialize(ref MemoryPackReader reader, ref UserState value)
+        {
+            value = reader.ReadUnmanaged<UserState>();
+        }
+    }
+
     /// <summary>
     /// 网络状态码
     /// </summary>
@@ -25,13 +38,46 @@ namespace GameCore.FishGame
         Failed,
     }
 
+    public class StatusCodeFormatter : MemoryPackFormatter<StatusCode>
+    {
+        public override void Serialize<TBufferWriter>(ref MemoryPackWriter<TBufferWriter> writer, ref StatusCode value)
+        {
+            writer.WriteUnmanaged(value);
+        }
+
+        public override void Deserialize(ref MemoryPackReader reader, ref StatusCode value)
+        {
+            value = reader.ReadUnmanaged<StatusCode>();
+        }
+    }
+
+    public enum GameState : byte
+    {
+        None,
+        Joined,
+        Ready,
+        Gaming,
+        Win,
+        Failed,
+    }
+
+    public class GameStateFormatter : MemoryPackFormatter<GameState>
+    {
+        public override void Serialize<TBufferWriter>(ref MemoryPackWriter<TBufferWriter> writer, ref GameState value)
+        {
+            writer.WriteUnmanaged(value);
+        }
+
+        public override void Deserialize(ref MemoryPackReader reader, ref GameState value)
+        {
+            value = reader.ReadUnmanaged<GameState>();
+        }
+    }
+
     [MemoryPackable]
-    // [MessagePackObject]
     public partial struct RegisterResult
     {
-        // [Key(0)]
         public uint userId;
-        // [Key(1)]
         public StatusCode code;
     }
 
@@ -60,16 +106,6 @@ namespace GameCore.FishGame
         UnaryResult Leave(string userId);
     }
 
-
-    public enum GameState : byte
-    {
-        None,
-        Joined,
-        Ready,
-        Gaming,
-        Win,
-        Failed,
-    }
 
     /// <summary>
     /// Client -> Server
