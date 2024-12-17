@@ -9,7 +9,7 @@ https://github.com/Cysharp/MagicOnion
 To generate the AOT code for MessagePack, run the following command:
 
 ```shell
-mpc -i "GameCore/GameCore.csproj" -o GameCore/AOTGeneration/MessagePackGeneration.cs; 
+mpc -i "../GameCore.csproj" -o AOTGeneration/MessagePackGeneration.cs; 
 ```
 
 
