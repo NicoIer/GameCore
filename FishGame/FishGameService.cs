@@ -37,26 +37,31 @@ namespace GameCore.FishGame
         Failed,
     }
     
+    
     [MemoryPackable]
-    public partial struct RegisterResult
+    public partial struct RegisterResponse
     {
         public uint userId;
         public StatusCode code;
+        public string msg;
     }
 
     /// <summary>
     /// 全局服务
     /// </summary>
-    public interface IGlobalService : IStreamingHub<IGlobalService, IGlobalServiceReceiver>
+    public interface IGlobalServiceHud : IStreamingHub<IGlobalServiceHud, IGlobalServiceHubReceiver>
     {
-        // ValueTask<RegisterResult> Register(string nickName);
+        ValueTask<RegisterResponse> Register(string nickName);
         ValueTask<UserState> GetState(uint userId);
         ValueTask<StatusCode> Login(uint userId);
         ValueTask<StatusCode> Logout(uint userId);
+        void SendHeartbeat(uint userId);
     }
 
-    public interface IGlobalServiceReceiver
+    public interface IGlobalServiceHubReceiver
     {
+        ValueTask<long> PushTimeMilliSeconds(long milliSeconds);
+        ValueTask<string> PushMessage(string message);
     }
 
     /// <summary>
