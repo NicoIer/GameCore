@@ -1,5 +1,7 @@
+using System;
 using System.Threading.Tasks;
 using MagicOnion;
+using MemoryPack;
 
 namespace GameCore.FishGame
 {
@@ -8,10 +10,19 @@ namespace GameCore.FishGame
     /// </summary>
     public interface IFishGameHud : IStreamingHub<IFishGameHud, IFishGameHudReceiver>
     {
-        ValueTask JoinAsync(uint uid);
-        ValueTask ReadyAsync(uint uid);
+        ValueTask<Error> JoinAsync(uint uid, uint roomId);
+        ValueTask<Error> ReadyAsync(uint uid);
         ValueTask LeaveAsync(uint uid);
+        ValueTask<MatchRoomResponse> MatchRoom(uint userId);
     }
+
+    [MemoryPackable]
+    public partial struct MatchRoomResponse
+    {
+        public uint roomId;
+        public Error error;
+    }
+    
 
 
     /// <summary>
