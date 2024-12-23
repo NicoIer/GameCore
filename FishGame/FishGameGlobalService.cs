@@ -11,13 +11,13 @@ namespace GameCore.FishGame{
         ValueTask<UserState> GetState(uint userId);
         ValueTask<StatusCode> Login(uint userId);
         ValueTask<StatusCode> Logout(uint userId);
-        void SendHeartbeat(uint userId);
+        ValueTask SendHeartbeat(uint userId);
     }
 
     public interface IGlobalServiceHubReceiver
     {
-        ValueTask<long> PushTimeMilliSeconds(long milliSeconds);
-        ValueTask<string> PushMessage(string message);
+        void PushTimeMilliSeconds(int milliSeconds);
+        void PushMessage(string message);
     }
 
 }
