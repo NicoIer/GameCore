@@ -8,12 +8,12 @@ namespace GameCore.FishGame
     /// <summary>
     /// Client -> Server
     /// </summary>
-    public interface IGameHub : IStreamingHub<IGameHub, IGameHudReceiver>
+    public interface IFishGameHub : IStreamingHub<IFishGameHub, IGameHudReceiver>
     {
-        ValueTask<Error> JoinAsync(uint uid, uint roomId);
-        ValueTask<Error> ReadyAsync(uint uid);
-        ValueTask LeaveAsync(uint uid);
-        ValueTask<MatchRoomResponse> MatchRoom(uint userId);
+        ValueTask<Error> JoinAsync(string macToken, uint roomId);
+        ValueTask<Error> ReadyAsync(string macToken);
+        ValueTask LeaveAsync(string macToken);
+        ValueTask<MatchRoomResponse> MatchRoom(string macToken);
     }
 
     [MemoryPackable]

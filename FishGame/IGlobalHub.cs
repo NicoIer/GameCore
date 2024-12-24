@@ -8,12 +8,8 @@ namespace GameCore.FishGame
     /// </summary>
     public interface IGlobalHub : IStreamingHub<IGlobalHub, IGlobalHubReceiver>
     {
-        // ValueTask<RegisterResponse> Register(string nickName);
-        ValueTask<StateResponse> GetState(uint userId);
-        // ValueTask<Error> Login(uint userId);
-        // ValueTask<Error> Logout(uint userId);
+        ValueTask<StateResponse> GetState(string macToken);
 
-        ValueTask<Error> Register(string nickName, string macToken);
 
         ValueTask<Error> Login(string macToken);
 
