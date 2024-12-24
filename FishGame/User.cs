@@ -9,7 +9,7 @@ namespace FishGame
         public int id { get; set; }
         public uint uid { get; set; }
         public string nickname { get; set; }
-        public GlobalState GlobalState { get; set; }
+        public GlobalState globalState { get; set; }
 
         public GameState gameState { get; set; }
 
