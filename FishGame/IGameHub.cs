@@ -8,7 +8,7 @@ namespace GameCore.FishGame
     /// <summary>
     /// Client -> Server
     /// </summary>
-    public interface IGameHud : IStreamingHub<IGameHud, IFishGameHudReceiver>
+    public interface IGameHub : IStreamingHub<IGameHub, IGameHudReceiver>
     {
         ValueTask<Error> JoinAsync(uint uid, uint roomId);
         ValueTask<Error> ReadyAsync(uint uid);
@@ -28,7 +28,7 @@ namespace GameCore.FishGame
     /// <summary>
     /// Server -> Client
     /// </summary>
-    public interface IFishGameHudReceiver
+    public interface IGameHudReceiver
     {
         /// <summary>
         /// 服务器对时，向客户端推送当前游戏时间戳
