@@ -3,10 +3,9 @@ namespace GameCore.FishGame
     /// <summary>
     /// 用户状态
     /// </summary>
-    public enum UserState : byte
+    public enum GlobalState : byte
     {
-        None,
-        Login, // 登录
+        Offline,
         Hall, // 大厅
         Gaming, // 游戏中
     }

@@ -8,7 +8,7 @@ namespace GameCore.FishGame
     /// <summary>
     /// Client -> Server
     /// </summary>
-    public interface IFishGameHud : IStreamingHub<IFishGameHud, IFishGameHudReceiver>
+    public interface IGameHud : IStreamingHub<IGameHud, IFishGameHudReceiver>
     {
         ValueTask<Error> JoinAsync(uint uid, uint roomId);
         ValueTask<Error> ReadyAsync(uint uid);

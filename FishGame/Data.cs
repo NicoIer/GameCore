@@ -17,6 +17,7 @@ namespace GameCore.FishGame
     public partial struct RegisterResponse
     {
         public uint userId;
+        public long token;
         public Error error;
     }
 
@@ -26,10 +27,20 @@ namespace GameCore.FishGame
         public StatusCode code;
         public string msg;
 
-        public static readonly Error Success = new Error { code = StatusCode.Success };
-        public static readonly Error Failed = new Error { code = StatusCode.Failed };
-        public static readonly Error UserNotFound = new Error { code = StatusCode.Failed, msg = "User not found" };
-        public static readonly Error RoomNotFound = new Error { code = StatusCode.Failed, msg = "Room not found" };
+        public static readonly Error success = new Error { code = StatusCode.Success };
+        public static readonly Error failed = new Error { code = StatusCode.Failed };
+        public static readonly Error userNotFound = new Error { code = StatusCode.Failed, msg = "User not found" };
+        public static readonly Error roomNotFound = new Error { code = StatusCode.Failed, msg = "Room not found" };
+
+        public static readonly Error nickNameAlreadyExists =
+            new Error { code = StatusCode.Failed, msg = "NickName already exists" };
+    }
+
+    [MemoryPackable]
+    public partial struct StateResponse
+    {
+        public GlobalState state;
+        public Error error;
     }
 
     [MemoryPackable]
