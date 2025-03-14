@@ -1,4 +1,4 @@
-namespace GameCore.Position
+namespace GameCore.PhysX
 {
     
 }
