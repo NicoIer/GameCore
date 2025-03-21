@@ -1,0 +1,18 @@
+{
+  "name": "com.nicoier.gamecore.physx",
+  "version": "0.0.1",
+  "displayName": "GameCore PhysX",
+  "description": "PhysX integration for GameCore",
+  "unity": "2022.3",
+  "dependencies": {
+  },
+  "keywords": [
+    "GameCore",
+    "PhysX"
+  ],
+  "author": {
+    "name": "nicoier",
+    "email": "nicoier@163.com",
+    "url": "https://nicoier.github.io/"
+  }
+}
